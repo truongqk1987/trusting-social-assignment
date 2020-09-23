@@ -6,7 +6,7 @@ body, html {
 
 #root {
   /* The image used */
-  background-image: url("./assets/images/background.jpg");
+  background-image: url("/background.jpg");
 
   /* Full height */
   height: 100vh;

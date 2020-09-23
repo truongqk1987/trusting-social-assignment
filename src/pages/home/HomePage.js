@@ -16,7 +16,7 @@ const HomeContainer = () => {
             (countryName) =>
               countryName.toLowerCase().indexOf(value.toLowerCase()) > -1
           );
-        setSuggestList(filterListByValue.slice(0, 10));
+        setSuggestList(filterListByValue.slice(0, 5));
     }, 300)).current;
 
     const onUserInputChanged = useCallback((event) => {

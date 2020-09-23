@@ -6,13 +6,12 @@ import {
   Route
 } from "react-router-dom";
 
-import './index.css';
 import { HomePage } from './pages';
 
 ReactDOM.render(
   <Router>
     <Switch>
-      <Route exact path="*">
+      <Route exact path="/">
         <HomePage />
       </Route>
     </Switch>
