@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import ToggleDarkTheme from '../ToggleDarkTheme/ToggleDarkTheme';
 import "./HeaderMenu.css";
 import { ReactComponent as Logo } from "../../assets/images/airbnb-logo.svg";
 
@@ -13,17 +14,18 @@ const toggleResponsiveMenu = () => {
   }
 };
 
-const HeaderMenu = () => (
+const HeaderMenu = ({ onToggleDarkTheme, isDarkTheme }) => (
   <div className="topnav" id="headerNav">
-    <Link className="logo-container">
-      <Logo alt="close bubble" className="logo" />
+    <Link to="/" className="logo-container">
+      <Logo className="logo" />
     </Link>
     <Link to="/">Login</Link>
     <Link to="/">Sign up</Link>
     <Link to="/">Help</Link>
     <Link to="/">Became a host</Link>
+    <Link to="/" className="toggle-dark-theme"><ToggleDarkTheme onToggleDarkTheme={onToggleDarkTheme} value={isDarkTheme}/></Link>
     <Link to="/" className="icon" onClick={toggleResponsiveMenu}>
-      <i class="fa fa-bars hamburger"></i>
+      <i className="fa fa-bars hamburger"></i>
     </Link>
   </div>
 );

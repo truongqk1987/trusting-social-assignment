@@ -1,2 +1,3 @@
-export { HeaderMenu } from './headerMenu';
-export { AutocompleteInput } from './autocompleteInput';
+export { HeaderMenu } from './HeaderMenu';
+export { AutocompleteInput } from './AutocompleteInput';
+export { ToggleDarkTheme } from './ToggleDarkTheme';
