@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createUseStyles } from "react-jss";
 
 import ToggleDarkTheme from "../ToggleDarkTheme/ToggleDarkTheme";
-//import "./HeaderMenu.css";
 import { ReactComponent as Logo } from "../../assets/images/airbnb-logo.svg";
 
 const useStyles = createUseStyles({
@@ -71,21 +70,18 @@ const useStyles = createUseStyles({
   },
 });
 
-const toggleResponsiveMenu = () => {
-  var headerNavElem = document.getElementById("headerNav");
-  if (headerNavElem.className === "topnav") {
-    headerNavElem.className += " responsive";
-  } else {
-    headerNavElem.className = "topnav";
-  }
-};
 
 const HeaderMenu = ({ onToggleDarkTheme, isDarkTheme }) => {
   const classes = useStyles();
+  const [ isResponsive, setResponsive ] = useState('');
+
+  const toggleResponsiveMenu = () => {
+    setResponsive(!isResponsive);
+  };
 
   return (
     <div className={classes.HeaderMenu}>
-      <div className="topnav" id="headerNav">
+      <div className={`topnav ${isResponsive && 'responsive'}`} id="headerNav">
         <Link to="/" className="logo-container">
           <Logo className="logo" />
         </Link>

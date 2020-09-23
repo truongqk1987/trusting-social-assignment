@@ -10,8 +10,8 @@ const ToggleDarkTheme = ({ onToggleDarkTheme, value }) => {
       className="react-switch-checkbox"
       id={`react-switch-new`}
       type="checkbox"
-      defaultChecked={false}
       checked={value}
+      readOnly
     />
     <label
       className="react-switch-label"
