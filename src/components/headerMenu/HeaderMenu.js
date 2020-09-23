@@ -43,8 +43,9 @@ const useStyles = createUseStyles({
   "@media (max-width: 600px)": {
     HeaderMenu: {
       "& > .topnav a": {
-        "&:not(:first-child)": {
-          display: "none",
+        display: 'none',
+        "&:first-child": {
+          display: "block",
         },
         "&.icon": {
           float: "right",
@@ -58,10 +59,11 @@ const useStyles = createUseStyles({
           right: 0,
           top: 0,
         },
-        "& a:not(:first-child)": {
-          float: "none",
-          display: "block",
+        "& a": {
+          float: "none ",
+          display: "block ",
           textAlign: "left",
+          padding: '0.5rem 0.25rem',
         },
       },
     }
