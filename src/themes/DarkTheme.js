@@ -1,6 +1,6 @@
 export default {
     textPrimaryColor: '#ffffff',
-    pageOpacity: 1,
+    pageOpacity: 0.5,
     toggleThemeBackgroud: '#484848',
     searchedTextColor: '#ffffff',
     searchBoxBackground: '#000000',

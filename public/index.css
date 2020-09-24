@@ -10,10 +10,11 @@ body {
 
   /* Full height */
   height: 100vh;
-  padding: 1rem;
 
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+#root { padding: 1rem }
