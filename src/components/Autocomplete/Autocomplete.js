@@ -1,75 +1,66 @@
-import React from "react";
-import { createUseStyles } from "react-jss";
+import React, { useState } from "react";
 import isEmpty from "lodash.isempty";
 
-import { useTheme } from '../../App';
+import { useTheme } from "../../App";
 import { ReactComponent as SearchIcon } from "../../assets/images/search-icon.svg";
+import { useStyles } from "./stylesheet";
 
-const SearchBoxLayout = {
-  maxWidth: "30rem",
-  minWidth: "8rem",
-  padding: "0.5rem",
-};
-
-const useStyles = createUseStyles({
-  SearchBox: {
-    display: "flex",
-    alignItems: "center",
-    background: ({ theme }) => theme.searchBoxBackground,
-    margin: "10rem auto 0.125rem auto",
-    ...SearchBoxLayout,
-    padding: "0.75rem",
-    "& > .search-icon": {
-      width: "1.2rem",
-      height: "1.2rem",
-      color: ({ theme }) => theme.searchedTextColor
-    },
-
-    "& > .search-input": {
-      border: "none",
-      background: "transparent",
-      padding: "0.15rem 0.75rem",
-      flexGrow: 1,
-      "&:focus": {
-        outline: "none",
-      },
-      color: ({ theme }) => theme.searchedTextColor,
-    },
-  },
-  "@media (max-width: 600px)": {
-      SearchBox: {
-          marginTop: '2rem',
-      },
-  },
-  Options: {
-    display: "block",
-    listStyle: "none",
-    ...SearchBoxLayout,
-    margin: "auto",
-    padding: 0,
-    maxWidth: '31.5rem',
-
-    '& > li.item': {
-        padding: '0.75rem',
-        background: ({ theme }) => theme.suggestItemBackground,
-        color: ({ theme }) => theme.searchedTextColor,
-    }
-  },
-});
-
-const Options = ({ values, classes }) => (
+const Options = ({ suggestList, classes, activeOption, onOptionClicked }) => (
   <ul className={classes.Options}>
-    {values.map((value, index) => (
-      <li className="item" key={value} onClick={() => {}}>
+    {suggestList.map((value, index) => (
+      <li
+        className={`option ${activeOption === index && "active"}`}
+        key={value}
+        onClick={onOptionClicked}
+      >
         {value}
       </li>
     ))}
   </ul>
 );
 
-const AutocompleteInput = ({ suggestList, onChange, onKeyDown, value }) => {
-  const theme = useTheme()
+const AutocompleteInput = ({ suggestList, onSearchChanged, resetSuggestList }) => {
+  const [userInput, setUserInput] = useState("");
+  const [showOptions, setShowOptions] = useState(false);
+  const [activeOption, setActiveOption] = useState(0);
+
+  const theme = useTheme();
   const classes = useStyles({ theme });
+
+  const onChange = (event) => {
+    onSearchChanged(event.target.value);
+    setUserInput(event.target.value);
+    setActiveOption(0);
+    setShowOptions(true);
+  };
+
+  const onOptionClicked = (event) => {
+    setShowOptions(false);
+    setActiveOption(0);
+    setUserInput(event.currentTarget.innerText);
+    resetSuggestList();
+  }
+
+  const onKeyDown = (event) => {
+    // ENTER
+    if (event.keyCode === 13) {
+      setUserInput(suggestList[activeOption])
+      setActiveOption(0);
+      setShowOptions(false);
+      resetSuggestList();
+    } else if (event.keyCode === 38) {
+      if (activeOption === 0) {
+        return;
+      }
+      setActiveOption(activeOption - 1);
+    } else if (event.keyCode === 40) {
+      if (activeOption === suggestList.length - 1) {
+        return;
+      }
+      setActiveOption(activeOption + 1);
+    }
+  }
+
   return (
     <>
       <div className={classes.SearchBox}>
@@ -79,11 +70,13 @@ const AutocompleteInput = ({ suggestList, onChange, onKeyDown, value }) => {
           className="search-input"
           onChange={onChange}
           onKeyDown={onKeyDown}
-          value={value}
+          value={userInput}
         />
       </div>
-      {!isEmpty(suggestList) && (
-        <Options classes={classes} values={suggestList} />
+      {!isEmpty(suggestList) && userInput && showOptions && (
+        <Options
+          {...{ classes, suggestList, showOptions, activeOption, userInput, onOptionClicked }}
+        />
       )}
     </>
   );

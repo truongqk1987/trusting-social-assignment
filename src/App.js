@@ -18,10 +18,7 @@ const useStyles = createUseStyles({
         display: 'block',
         position: 'absolute',
         left: 0, right: 0, top: 0, bottom: 0,
-        background: ({theme}) => {
-            console.log(theme);
-            return `rgba(0, 0, 0, ${theme.pageOpacity})`
-        },
+        background: ({theme}) => `rgba(0, 0, 0, ${theme.pageOpacity})`,
         zIndex: -1
     }
 });

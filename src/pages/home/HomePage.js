@@ -1,16 +1,13 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useRef } from "react";
 import debounce from "lodash.debounce";
 
 import { Autocomplete } from "../../components";
 import AvailableCountryList from "./mock-data";
 
-const HomeContainer = () => {
-  const [userInput, setUserInput] = useState("");
+const HomePage = () => {
   const [suggestList, setSuggestList] = useState([]);
 
-  const onKeyDown = useCallback((event) => {}, []);
-
-  const debounceUserInput = useRef(
+  const debounceSearchChanged = useRef(
     debounce((value) => {
       const filterListByValue = AvailableCountryList.filter(
         (countryName) =>
@@ -20,23 +17,11 @@ const HomeContainer = () => {
     }, 300)
   ).current;
 
-  const onUserInputChanged = useCallback(
-    (event) => {
-      const updatedValue = event.target.value;
-      setUserInput(updatedValue);
-      debounceUserInput(updatedValue);
-    },
-    [debounceUserInput]
-  );
+  const resetSuggestList = () => setSuggestList([]);
 
   return (
-    <Autocomplete
-      onKeyDown={onKeyDown}
-      onChange={onUserInputChanged}
-      value={userInput}
-      suggestList={suggestList}
-    />
+    <Autocomplete onSearchChanged={debounceSearchChanged} suggestList={suggestList} resetSuggestList={resetSuggestList}/>
   );
 };
 
-export default HomeContainer;
+export default HomePage;
