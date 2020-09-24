@@ -1,6 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Screenshot
+## Pictures
 
 ### Desktop
 ![Desktop](https://github.com/truongqk1987/trusting-social-assignment/blob/master/desktop-snapshot.PNG)
