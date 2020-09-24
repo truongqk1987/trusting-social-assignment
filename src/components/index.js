@@ -1,3 +1,3 @@
-export { Header } from './Header';
-export { Autocomplete } from './Autocomplete';
-export { ToggleDarkTheme } from './ToggleDarkTheme';
+export { default as Header } from './Header/Header';
+export { default as Autocomplete } from './Autocomplete/Autocomplete';
+export { default as ToggleDarkTheme } from './ToggleDarkTheme/ToggleDarkTheme';

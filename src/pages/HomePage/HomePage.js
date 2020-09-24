@@ -19,13 +19,15 @@ const HomePage = () => {
 
   const resetSuggestList = () => setSuggestList([]);
 
-  return (
+  const renderer = (
     <Autocomplete
       onSearchChanged={debounceSearchChanged}
       suggestList={suggestList}
       resetSuggestList={resetSuggestList}
     />
   );
+
+  return renderer;
 };
 
 export default HomePage;

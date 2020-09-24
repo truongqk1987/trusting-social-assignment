@@ -1,10 +1,19 @@
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
-import App from './App';
+import App, { Backdrop } from './App';
 
 it('Render match Snapshot', () => {
-  const wrapper = shallow(<MemoryRouter><App /></MemoryRouter>);
+  const wrapper = shallow(<App />);
   expect(wrapper).toMatchSnapshot();
 });
+
+it('Render Backdrop match Snapshot', () => {
+    const wrapper = shallow(<Backdrop />);
+    expect(wrapper).toMatchSnapshot();
+});
+
+// it('Mount App successfully', () => {
+//     const wrapper = mount(<App />);
+//     expect(wrapper).toMatchSnapshot();
+// });

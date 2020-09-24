@@ -65,8 +65,7 @@ const AutocompleteInput = ({
     }
   };
 
-  return (
-    <>
+  const renderer = <>
       <div className={classes.SearchBox}>
         <SearchIcon className="search-icon" />
         <input
@@ -89,8 +88,9 @@ const AutocompleteInput = ({
           }}
         />
       )}
-    </>
-  );
+  </>
+
+  return renderer;
 };
 
 export default AutocompleteInput;
