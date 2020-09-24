@@ -17,7 +17,7 @@ const ToggleDarkTheme = ({ onDarkThemeChanged }) => {
     setSelected(!selected);
   }
 
-  const result = (
+  const renderer = (
     <div className={classes.ToggleContainer} onClick={onToggleClicked}>
       <NightIcon className="night-icon" />
       <div className={`toggle-button ${!selected && "night"}`}></div>
@@ -25,7 +25,7 @@ const ToggleDarkTheme = ({ onDarkThemeChanged }) => {
     </div>
   );
 
-  return result;
+  return renderer;
 };
 
 export default ToggleDarkTheme;

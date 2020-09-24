@@ -15,7 +15,7 @@ const HeaderMenu = ({ onDarkThemeChanged }) => {
     setShowHamburgerMenu(!isShowedHamburgerMenu);
   };
 
-  return (
+  const renderer = (
     <div className={classes.HeaderMenu}>
       <div className={`topnav ${isShowedHamburgerMenu && 'isShowedHamburgerMenu'}`} id="headerNav">
         <Link to="/" className="logo-container">
@@ -36,6 +36,8 @@ const HeaderMenu = ({ onDarkThemeChanged }) => {
       </div>
     </div>
   );
+  
+  return renderer
 };
 
 
