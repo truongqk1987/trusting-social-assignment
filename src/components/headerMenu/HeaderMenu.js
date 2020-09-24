@@ -9,8 +9,9 @@ const useStyles = createUseStyles({
   HeaderMenu: {
     "& > .topnav": {
       overflow: "hidden",
+      display: 'flex',
+      alignItems: 'center',
       "& a": {
-        float: "right",
         display: "block",
         color: "#ffffff",
         padding: "0.25rem 1.25rem",
@@ -21,7 +22,7 @@ const useStyles = createUseStyles({
         },
 
         "&.logo-container": {
-          float: "left",
+          flexGrow: 1,
           paddingLeft: 0,
           "& .logo": {
             height: "2rem",
@@ -51,15 +52,16 @@ const useStyles = createUseStyles({
           display: "block",
         },
       },
-      "& > .topnav.responsive": {
+      "& > .topnav.isShowedHamburgerMenu": {
         position: "relative",
+        flexDirection: 'column',
+        alignItems: 'unset',
         "& .icon": {
           position: "absolute",
           right: 0,
           top: 0,
         },
         "& a": {
-          float: "none ",
           display: "block ",
           textAlign: "left",
           padding: '0.5rem 0.25rem',
@@ -73,28 +75,28 @@ const useStyles = createUseStyles({
 
 const HeaderMenu = ({ onToggleDarkTheme, isDarkTheme }) => {
   const classes = useStyles();
-  const [ isResponsive, setResponsive ] = useState('');
+  const [ isShowedHamburgerMenu, setShowHamburgerMenu ] = useState('');
 
   const toggleResponsiveMenu = () => {
-    setResponsive(!isResponsive);
+    setShowHamburgerMenu(!isShowedHamburgerMenu);
   };
 
   return (
     <div className={classes.HeaderMenu}>
-      <div className={`topnav ${isResponsive && 'responsive'}`} id="headerNav">
+      <div className={`topnav ${isShowedHamburgerMenu && 'isShowedHamburgerMenu'}`} id="headerNav">
         <Link to="/" className="logo-container">
           <Logo className="logo" />
         </Link>
-        <Link to="/">Login</Link>
-        <Link to="/">Sign up</Link>
-        <Link to="/">Help</Link>
-        <Link to="/">Became a host</Link>
         <Link to="/" className="toggle-dark-theme">
           <ToggleDarkTheme
             onToggleDarkTheme={onToggleDarkTheme}
             value={isDarkTheme}
           />
         </Link>
+        <Link to="/">Became a host</Link>
+        <Link to="/">Help</Link>
+        <Link to="/">Sign up</Link>
+        <Link to="/">Login</Link>
         <Link to="/" className="icon" onClick={toggleResponsiveMenu}>
           <i className="fa fa-bars hamburger"></i>
         </Link>

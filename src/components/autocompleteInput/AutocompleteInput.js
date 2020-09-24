@@ -15,7 +15,7 @@ const useStyles = createUseStyles({
     display: "flex",
     alignItems: "center",
     background: "#ffffff",
-    margin: "2rem auto 0.5rem auto",
+    margin: "10rem auto 0.5rem auto",
 
     ...SearchBoxLayout,
 
@@ -32,6 +32,11 @@ const useStyles = createUseStyles({
         outline: "none",
       },
     },
+  },
+  "@media (max-width: 600px)": {
+      SearchBox: {
+          marginTop: '2rem',
+      },
   },
   Options: {
     display: "block",
