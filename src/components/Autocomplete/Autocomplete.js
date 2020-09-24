@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import isEmpty from "lodash.isempty";
 
-import { useTheme } from "../../App";
-import { ReactComponent as SearchIcon } from "../../assets/images/search-icon.svg";
+import { useTheme } from "App";
+import { ReactComponent as SearchIcon } from "assets/images/search-icon.svg";
 import { useStyles } from "./stylesheet";
 
 const Options = ({ suggestList, classes, activeOption, onOptionClicked }) => (
@@ -52,12 +52,14 @@ const AutocompleteInput = ({
       setActiveOption(0);
       setShowOptions(false);
       resetSuggestList();
-    } else if (event.keyCode === 38) { // Up
+    } else if (event.keyCode === 38) {
+      // Up
       if (activeOption === 0) {
         return;
       }
       setActiveOption(activeOption - 1);
-    } else if (event.keyCode === 40) { // Down
+    } else if (event.keyCode === 40) {
+      // Down
       if (activeOption === suggestList.length - 1) {
         return;
       }
@@ -65,7 +67,8 @@ const AutocompleteInput = ({
     }
   };
 
-  const renderer = <>
+  const renderer = (
+    <>
       <div className={classes.SearchBox}>
         <SearchIcon className="search-icon" />
         <input
@@ -88,7 +91,8 @@ const AutocompleteInput = ({
           }}
         />
       )}
-  </>
+    </>
+  );
 
   return renderer;
 };

@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useStyles } from './stylesheet';
-import { useTheme } from '../../App';
+import { useTheme } from "App";
+import { ReactComponent as Logo } from "assets/images/airbnb-logo.svg";
+
+import { useStyles } from "./stylesheet";
 import ToggleDarkTheme from "../ToggleDarkTheme/ToggleDarkTheme";
-import { ReactComponent as Logo } from "../../assets/images/airbnb-logo.svg";
 
 const HeaderMenu = ({ onDarkThemeChanged }) => {
-  const theme = useTheme()
+  const theme = useTheme();
   const classes = useStyles({ theme });
-  const [ isShowedHamburgerMenu, setShowHamburgerMenu ] = useState('');
+  const [isShowedHamburgerMenu, setShowHamburgerMenu] = useState("");
 
   const toggleResponsiveMenu = () => {
     setShowHamburgerMenu(!isShowedHamburgerMenu);
@@ -17,14 +18,15 @@ const HeaderMenu = ({ onDarkThemeChanged }) => {
 
   const renderer = (
     <div className={classes.HeaderMenu}>
-      <div className={`topnav ${isShowedHamburgerMenu && 'isShowedHamburgerMenu'}`} id="headerNav">
+      <div
+        className={`topnav ${isShowedHamburgerMenu && "isShowedHamburgerMenu"}`}
+        id="headerNav"
+      >
         <Link to="/" className="logo-container">
           <Logo className="logo" />
         </Link>
         <Link to="/" className="toggle-dark-theme">
-          <ToggleDarkTheme
-            onDarkThemeChanged={onDarkThemeChanged}
-          />
+          <ToggleDarkTheme onDarkThemeChanged={onDarkThemeChanged} />
         </Link>
         <Link to="/">Became a host</Link>
         <Link to="/">Help</Link>
@@ -36,11 +38,8 @@ const HeaderMenu = ({ onDarkThemeChanged }) => {
       </div>
     </div>
   );
-  
-  return renderer
+
+  return renderer;
 };
-
-
-
 
 export default HeaderMenu;

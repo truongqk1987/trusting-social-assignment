@@ -48,11 +48,11 @@ export const useStyles = createUseStyles({
       padding: "0.75rem",
       background: ({ theme }) => theme.suggestItemBackground,
       color: ({ theme }) => theme.searchedTextColor,
-      '&.active': {
-          background: '#3498DB',
-          color: '#fff',
-          border: '1px solid'
-      }
+      "&.active": {
+        background: "#3498DB",
+        color: "#fff",
+        border: "1px solid",
+      },
     },
   },
 });

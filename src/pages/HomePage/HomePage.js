@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import debounce from "lodash.debounce";
 
-import { Autocomplete } from "../../components";
-import AvailableCountryList from "../../mock-data";
+import { Autocomplete } from "components";
+import AvailableCountryList from "mock-data";
 
 const HomePage = () => {
   const [suggestList, setSuggestList] = useState([]);

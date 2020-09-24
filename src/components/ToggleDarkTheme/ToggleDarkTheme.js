@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 
-import { useStyles } from './stylesheet';
-import { useTheme } from '../../App';
-import { ReactComponent as NightIcon } from "../../assets/images/night-icon.svg";
-import { ReactComponent as SunnyIcon } from "../../assets/images/sunny-icon.svg";
+import { useTheme } from "App";
+import { ReactComponent as NightIcon } from "assets/images/night-icon.svg";
+import { ReactComponent as SunnyIcon } from "assets/images/sunny-icon.svg";
 
-
+import { useStyles } from "./stylesheet";
 
 const ToggleDarkTheme = ({ onDarkThemeChanged }) => {
   const [selected, setSelected] = useState(false);
-  const theme = useTheme()
+  const theme = useTheme();
   const classes = useStyles({ theme });
-  
+
   const onToggleClicked = () => {
     onDarkThemeChanged(!selected);
     setSelected(!selected);
-  }
+  };
 
   const renderer = (
     <div className={classes.ToggleContainer} onClick={onToggleClicked}>

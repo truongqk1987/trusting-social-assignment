@@ -3,9 +3,9 @@ import { createTheming } from "react-jss";
 import { Switch, Route, BrowserRouter as Router, } from "react-router-dom";
 import { createUseStyles } from "react-jss";
 
-import { Header } from "./components";
-import { LightTheme, DarkTheme } from "./themes";
-import { HomePage } from "./pages";
+import { Header } from "components";
+import { LightTheme, DarkTheme } from "themes";
+import { HomePage } from "pages";
 
 const ThemeContext = React.createContext({});
 const theming = createTheming(ThemeContext);
