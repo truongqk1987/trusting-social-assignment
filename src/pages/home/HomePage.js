@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef } from 'react';
 import debounce from 'lodash.debounce';
 
-import { HeaderMenu , AutocompleteInput } from '../../components';
+import { Header , Autocomplete } from '../../components';
 import AvailableCountryList from './mock-data';
 
 const HomeContainer = () => {
@@ -27,8 +27,8 @@ const HomeContainer = () => {
     const onDarkThemeChanged = () => { };
     
     return <>
-        <HeaderMenu onDarkThemeChanged={onDarkThemeChanged} />
-        <AutocompleteInput onKeyDown={onKeyDown} onChange={onUserInputChanged} value={userInput} suggestList={suggestList}/>
+        <Header onDarkThemeChanged={onDarkThemeChanged} />
+        <Autocomplete onKeyDown={onKeyDown} onChange={onUserInputChanged} value={userInput} suggestList={suggestList}/>
     </>
 } 
 
