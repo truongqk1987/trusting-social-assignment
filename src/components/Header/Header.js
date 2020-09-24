@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createUseStyles } from "react-jss";
 
+import { useTheme } from '../../App';
 import ToggleDarkTheme from "../ToggleDarkTheme/ToggleDarkTheme";
 import { ReactComponent as Logo } from "../../assets/images/airbnb-logo.svg";
 
-const useStyles = createUseStyles({
+const useStyles = createUseStyles(({
   HeaderMenu: {
     "& > .topnav": {
       overflow: "hidden",
@@ -13,12 +14,12 @@ const useStyles = createUseStyles({
       alignItems: 'center',
       "& a": {
         display: "block",
-        color: "#ffffff",
+        color: ({theme}) => theme.textPrimaryColor,
         padding: "0.25rem 1.25rem",
         textDecoration: "none",
         "&:hover, &:active": {
           backgroundColor: "transparent",
-          color: "#ffffff",
+          color: ({theme}) => theme.textPrimaryColor,
         },
 
         "&.logo-container": {
@@ -70,11 +71,12 @@ const useStyles = createUseStyles({
     }
     
   },
-});
+}));
 
 
 const HeaderMenu = ({ onDarkThemeChanged }) => {
-  const classes = useStyles();
+  const theme = useTheme()
+  const classes = useStyles({ theme });
   const [ isShowedHamburgerMenu, setShowHamburgerMenu ] = useState('');
 
   const toggleResponsiveMenu = () => {

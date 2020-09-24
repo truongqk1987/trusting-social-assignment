@@ -2,19 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route
 } from "react-router-dom";
 
-import { HomePage } from './pages';
+import App from './App';
 
 ReactDOM.render(
   <Router>
-    <Switch>
-      <Route exact path="/">
-        <HomePage />
-      </Route>
-    </Switch>
+    <App />
   </Router>,
   document.getElementById('root')
 );

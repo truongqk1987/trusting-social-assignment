@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { createUseStyles } from "react-jss";
 
+import { useTheme } from '../../App';
 import { ReactComponent as NightIcon } from "../../assets/images/night-icon.svg";
 import { ReactComponent as SunnyIcon } from "../../assets/images/sunny-icon.svg";
 
 const useStyles = createUseStyles({
   ToggleContainer: {
     width: "70px",
-    backgroundColor: "#c4c4c4",
+    backgroundColor: ({theme}) => theme.toggleThemeBackgroud,
     cursor: "pointer",
     userSelect: "none",
     borderRadius: "32px",
@@ -17,7 +18,10 @@ const useStyles = createUseStyles({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-around",
-    '& .night, & .sunny': { height: "1.5rem" },
+    '& .night-icon, & .sunny-icon': { height: "1.5rem" },
+    '& .night-icon': {
+      fill: '#FFDB2D',
+    },
     '& .toggle-button': {
       height: "32px",
       borderRadius: "18px",
@@ -37,7 +41,7 @@ const useStyles = createUseStyles({
       position: "absolute",
       left: "40px",
       transition: "all 0.3s ease",
-      '&.disabled': {
+      '&.night': {
         left: "2px"
       }
     },
@@ -45,8 +49,9 @@ const useStyles = createUseStyles({
 });
 
 const ToggleDarkTheme = ({ onDarkThemeChanged }) => {
-  const [selected, setSelected] = useState(true);
-  const classes = useStyles();
+  const [selected, setSelected] = useState(false);
+  const theme = useTheme()
+  const classes = useStyles({ theme });
   
   const onToggleClicked = () => {
     onDarkThemeChanged(!selected);
@@ -55,9 +60,9 @@ const ToggleDarkTheme = ({ onDarkThemeChanged }) => {
 
   return (
     <div className={classes.ToggleContainer} onClick={onToggleClicked}>
-      <NightIcon className="night" />
-      <div className={`toggle-button ${selected && "disabled"}`}></div>
-      <SunnyIcon className="sunny" />
+      <NightIcon className="night-icon" />
+      <div className={`toggle-button ${!selected && "night"}`}></div>
+      <SunnyIcon className="sunny-icon" />
     </div>
   );
 };

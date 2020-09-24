@@ -14,7 +14,7 @@ const useStyles = createUseStyles({
   SearchBox: {
     display: "flex",
     alignItems: "center",
-    background: "#ffffff",
+    background: "#F0F0F0",
     margin: "10rem auto 0.5rem auto",
 
     ...SearchBoxLayout,
@@ -26,6 +26,7 @@ const useStyles = createUseStyles({
 
     "& > .search-input": {
       border: "none",
+      background: "transparent",
       padding: "0.15rem 0.5rem",
       flexGrow: 1,
       "&:focus": {
