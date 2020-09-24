@@ -1,10 +1,10 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render } from '@testing-library/react';
+import { shallow } from 'enzyme';
 
 import App from './App';
 
 it('Render match Snapshot', () => {
-  const { asFragment } = render(<MemoryRouter><App /></MemoryRouter>);
-  expect(asFragment()).toMatchSnapshot();
+  const wrapper = shallow(<MemoryRouter><App /></MemoryRouter>);
+  expect(wrapper).toMatchSnapshot();
 });

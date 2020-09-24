@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { shallow } from 'enzyme';
 
 import HomePage from './HomePage';
 
 it('Render match Snapshot', () => {
-    const { asFragment } = render(<HomePage />);
-    expect(asFragment()).toMatchSnapshot();
+    const wrapper = shallow(<HomePage />);
+    expect(wrapper).toMatchSnapshot();
 });

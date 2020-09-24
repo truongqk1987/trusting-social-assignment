@@ -1,10 +1,10 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom'
+import { shallow } from 'enzyme';
 
 import Header from './Header';
 
 it('Render match Snapshot', () => {
-    const { asFragment } = render(<MemoryRouter><Header /></MemoryRouter>);
-    expect(asFragment()).toMatchSnapshot();
+    const wrapper = shallow(<MemoryRouter><Header /></MemoryRouter>);
+    expect(wrapper).toMatchSnapshot();
 });

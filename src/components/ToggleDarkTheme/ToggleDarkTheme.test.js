@@ -1,9 +1,9 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { shallow } from 'enzyme';
 
 import ToggleDarkTheme from './ToggleDarkTheme';
 
 it('Render match Snapshot', () => {
-    const { asFragment } = render(<ToggleDarkTheme />);
-    expect(asFragment()).toMatchSnapshot();
+    const wrapper = shallow(<ToggleDarkTheme />);
+    expect(wrapper).toMatchSnapshot();
 });
