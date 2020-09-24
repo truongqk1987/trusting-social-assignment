@@ -5,7 +5,6 @@ import { HeaderMenu , AutocompleteInput } from '../../components';
 import AvailableCountryList from './mock-data';
 
 const HomeContainer = () => {
-    const [ value, setValue ] = useState(false);
     const [ userInput, setUserInput ] = useState('');
     const [ suggestList, setSuggestList ] = useState([]);
 
@@ -25,9 +24,10 @@ const HomeContainer = () => {
         debounceUserInput(updatedValue)
     }, [debounceUserInput]);
 
-    const onToggleDarkTheme = () => { setValue(!value)};
+    const onDarkThemeChanged = () => { };
+    
     return <>
-        <HeaderMenu onToggleDarkTheme={onToggleDarkTheme} isDarkTheme={value} />
+        <HeaderMenu onDarkThemeChanged={onDarkThemeChanged} />
         <AutocompleteInput onKeyDown={onKeyDown} onChange={onUserInputChanged} value={userInput} suggestList={suggestList}/>
     </>
 } 

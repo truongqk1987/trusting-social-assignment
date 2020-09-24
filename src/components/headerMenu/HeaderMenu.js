@@ -73,7 +73,7 @@ const useStyles = createUseStyles({
 });
 
 
-const HeaderMenu = ({ onToggleDarkTheme, isDarkTheme }) => {
+const HeaderMenu = ({ onDarkThemeChanged }) => {
   const classes = useStyles();
   const [ isShowedHamburgerMenu, setShowHamburgerMenu ] = useState('');
 
@@ -89,8 +89,7 @@ const HeaderMenu = ({ onToggleDarkTheme, isDarkTheme }) => {
         </Link>
         <Link to="/" className="toggle-dark-theme">
           <ToggleDarkTheme
-            onToggleDarkTheme={onToggleDarkTheme}
-            value={isDarkTheme}
+            onDarkThemeChanged={onDarkThemeChanged}
           />
         </Link>
         <Link to="/">Became a host</Link>

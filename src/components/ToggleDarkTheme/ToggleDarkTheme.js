@@ -44,12 +44,17 @@ const useStyles = createUseStyles({
   },
 });
 
-const ToggleDarkTheme = () => {
+const ToggleDarkTheme = ({ onDarkThemeChanged }) => {
   const [selected, setSelected] = useState(true);
   const classes = useStyles();
+  
+  const onToggleClicked = () => {
+    onDarkThemeChanged(!selected);
+    setSelected(!selected);
+  }
 
   return (
-    <div className={classes.ToggleContainer} onClick={() => setSelected(!selected)}>
+    <div className={classes.ToggleContainer} onClick={onToggleClicked}>
       <NightIcon className="night" />
       <div className={`toggle-button ${selected && "disabled"}`}></div>
       <SunnyIcon className="sunny" />
