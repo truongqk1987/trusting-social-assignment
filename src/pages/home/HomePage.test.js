@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Autocomplete from './Autocomplete';
+import HomePage from './HomePage';
 
 it('Render match Snapshot', () => {
-    const { asFragment } = render(<Autocomplete />);
+    const { asFragment } = render(<HomePage />);
     expect(asFragment()).toMatchSnapshot();
 });

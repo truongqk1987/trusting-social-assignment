@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import debounce from "lodash.debounce";
 
 import { Autocomplete } from "../../components";
-import AvailableCountryList from "./mock-data";
+import AvailableCountryList from "../../mock-data";
 
 const HomePage = () => {
   const [suggestList, setSuggestList] = useState([]);
@@ -20,7 +20,11 @@ const HomePage = () => {
   const resetSuggestList = () => setSuggestList([]);
 
   return (
-    <Autocomplete onSearchChanged={debounceSearchChanged} suggestList={suggestList} resetSuggestList={resetSuggestList}/>
+    <Autocomplete
+      onSearchChanged={debounceSearchChanged}
+      suggestList={suggestList}
+      resetSuggestList={resetSuggestList}
+    />
   );
 };
 

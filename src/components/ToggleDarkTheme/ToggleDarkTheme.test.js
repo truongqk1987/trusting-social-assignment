@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Autocomplete from './Autocomplete';
+import ToggleDarkTheme from './ToggleDarkTheme';
 
 it('Render match Snapshot', () => {
-    const { asFragment } = render(<Autocomplete />);
+    const { asFragment } = render(<ToggleDarkTheme />);
     expect(asFragment()).toMatchSnapshot();
 });

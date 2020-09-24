@@ -19,7 +19,11 @@ const Options = ({ suggestList, classes, activeOption, onOptionClicked }) => (
   </ul>
 );
 
-const AutocompleteInput = ({ suggestList, onSearchChanged, resetSuggestList }) => {
+const AutocompleteInput = ({
+  suggestList,
+  onSearchChanged,
+  resetSuggestList,
+}) => {
   const [userInput, setUserInput] = useState("");
   const [showOptions, setShowOptions] = useState(false);
   const [activeOption, setActiveOption] = useState(0);
@@ -39,27 +43,27 @@ const AutocompleteInput = ({ suggestList, onSearchChanged, resetSuggestList }) =
     setActiveOption(0);
     setUserInput(event.currentTarget.innerText);
     resetSuggestList();
-  }
+  };
 
   const onKeyDown = (event) => {
     // ENTER
     if (event.keyCode === 13) {
-      setUserInput(suggestList[activeOption])
+      setUserInput(suggestList[activeOption]);
       setActiveOption(0);
       setShowOptions(false);
       resetSuggestList();
-    } else if (event.keyCode === 38) {
+    } else if (event.keyCode === 38) { // Up
       if (activeOption === 0) {
         return;
       }
       setActiveOption(activeOption - 1);
-    } else if (event.keyCode === 40) {
+    } else if (event.keyCode === 40) { // Down
       if (activeOption === suggestList.length - 1) {
         return;
       }
       setActiveOption(activeOption + 1);
     }
-  }
+  };
 
   return (
     <>
@@ -75,7 +79,14 @@ const AutocompleteInput = ({ suggestList, onSearchChanged, resetSuggestList }) =
       </div>
       {!isEmpty(suggestList) && userInput && showOptions && (
         <Options
-          {...{ classes, suggestList, showOptions, activeOption, userInput, onOptionClicked }}
+          {...{
+            classes,
+            suggestList,
+            showOptions,
+            activeOption,
+            userInput,
+            onOptionClicked,
+          }}
         />
       )}
     </>
